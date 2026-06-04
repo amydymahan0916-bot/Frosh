@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پرداخت سفارش</title><link rel="stylesheet" href="style.css"><style>
+.paybox{
+    width:90%;
+    max-width:700px;
+    margin:30px auto;
+    background:#161b22;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.card-number{
+    font-size:22px;
+    color:#00ff88;
+    margin:20px 0;
+    word-break:break-all;
+}
+
+.copy-btn{
+    border:none;
+    background:#00ff88;
+    color:black;
+    padding:12px 20px;
+    border-radius:10px;
+    font-size:16px;
+}
+</style></head>
+<body><div class="logo">
+<h1>💳 پرداخت سفارش</h1>
+</div><div class="paybox"><h2 id="service"></h2><h3 id="price"></h3><hr><p>شماره کارت:</p><div class="card-number" id="card">
+6037997194784360
+</div><button class="copy-btn" onclick="copyCard()">
+کپی شماره کارت
+</button><br><br>
+
+<p>
+به نام:
+ماهان امیدی
+</p><hr><p>
+روبیکا:
+@Omidi__xx
+</p><p>
+شماره تماس:
+09379405557
+</p><br><a class="btn" href="index.html">
+بازگشت به صفحه اصلی
+</a></div><script>
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+document.getElementById("service").innerText =
+params.get("service") || "سفارش";
+
+document.getElementById("price").innerText =
+(params.get("price") || "0") +
+" تومان";
+
+function copyCard(){
+
+navigator.clipboard.writeText(
+"6277601420999847"
+);
+
+alert("شماره کارت کپی شد");
+
+}
+
+</script></body>
+</html>
