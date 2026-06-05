@@ -1,76 +1,190 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>پرداخت سفارش</title><link rel="stylesheet" href="style.css"><style>
-.paybox{
-    width:90%;
-    max-width:700px;
-    margin:30px auto;
-    background:#161b22;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
+
+<title>پرداخت سفارش</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
+
+body{
+background:#f5f5f5;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+}
+
+.box{
+background:white;
+border-radius:20px;
+padding:25px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+margin-bottom:20px;
+}
+
+.title{
+text-align:center;
+font-size:24px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.service{
+font-size:20px;
+margin-bottom:15px;
+text-align:center;
+}
+
+.price{
+font-size:28px;
+color:#2e7d32;
+font-weight:bold;
+text-align:center;
+margin-bottom:20px;
+}
+
+.card-title{
+text-align:center;
+font-size:18px;
+margin-bottom:10px;
 }
 
 .card-number{
-    font-size:22px;
-    color:#00ff88;
-    margin:20px 0;
-    word-break:break-all;
+background:#f7f7f7;
+padding:15px;
+border-radius:12px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+direction:ltr;
+margin-bottom:10px;
+}
+
+.owner{
+text-align:center;
+font-size:18px;
+margin-bottom:15px;
 }
 
 .copy-btn{
-    border:none;
-    background:#00ff88;
-    color:black;
-    padding:12px 20px;
-    border-radius:10px;
-    font-size:16px;
+width:100%;
+padding:15px;
+border:none;
+background:#1976d2;
+color:white;
+font-size:17px;
+border-radius:12px;
+cursor:pointer;
 }
-</style></head>
-<body><div class="logo">
-<h1>💳 پرداخت سفارش</h1>
-</div><div class="paybox"><h2 id="service"></h2><h3 id="price"></h3><hr><p>شماره کارت:</p><div class="card-number" id="card">
+
+.pay-btn{
+display:block;
+width:100%;
+text-align:center;
+padding:18px;
+background:#28a745;
+color:white;
+text-decoration:none;
+font-size:20px;
+font-weight:bold;
+border-radius:12px;
+margin-top:20px;
+}
+
+.note{
+margin-top:15px;
+text-align:center;
+color:#666;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="box">
+
+<div class="title">
+پرداخت سفارش
+</div>
+
+<div class="service" id="service">
+درحال دریافت سرویس...
+</div>
+
+<div class="price" id="price">
+0 تومان
+</div>
+
+<div class="card-title">
+شماره کارت
+</div>
+
+<div class="card-number" id="card">
 6037997194784360
-</div><button class="copy-btn" onclick="copyCard()">
-کپی شماره کارت
-</button><br><br>
+</div>
 
-<p>
-به نام:
-ماهان امیدی
-</p><hr><p>
-روبیکا:
-@Omidi__xx
-</p><p>
-شماره تماس:
-09379405557
-</p><br><a class="btn" href="index.html">
-بازگشت به صفحه اصلی
-</a></div><script>
+<div class="owner">
+به نام: ماهان امیدی
+</div>
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+<button class="copy-btn" onclick="copyCard()">
+📋 کپی شماره کارت
+</button>
+
+<a class="pay-btn" href="https://rubika.ir/Omidi__xx">
+✅ پرداخت کردم
+</a>
+
+<div class="note">
+پس از واریز روی دکمه بالا بزنید و رسید پرداخت را ارسال کنید.
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const service =
+params.get("service") || "سرویس انتخاب نشده";
+
+const price =
+params.get("price") || "0";
 
 document.getElementById("service").innerText =
-params.get("service") || "سفارش";
+service;
 
 document.getElementById("price").innerText =
-(params.get("price") || "0") +
-" تومان";
+Number(price).toLocaleString('fa-IR') + " تومان";
 
 function copyCard(){
 
-navigator.clipboard.writeText(
-"6277601420999847"
-);
+navigator.clipboard.writeText("6037997194784360");
 
 alert("شماره کارت کپی شد");
 
 }
 
-</script></body>
+</script>
+
+</body>
 </html>
