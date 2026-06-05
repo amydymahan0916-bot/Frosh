@@ -1,74 +1,78 @@
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:tahoma;
-background:linear-gradient(135deg,#6a11cb,#2575fc);
-min-height:100vh;
 }
 
-.top-box{
-width:90%;
-max-width:900px;
-margin:20px auto;
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(10px);
+body{
+background:#0f172a;
 color:white;
-padding:25px;
-border-radius:25px;
-text-align:center;
+padding:20px;
 }
 
-.grid{
-width:95%;
-max-width:900px;
+.header{
+text-align:center;
+margin-bottom:30px;
+}
+
+.logo{
+width:90px;
+height:90px;
+background:#2563eb;
+border-radius:50%;
 margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.btn{
-text-decoration:none;
-color:white;
-padding:25px 15px;
-border-radius:20px;
-text-align:center;
-font-size:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
 font-weight:bold;
 }
 
-.btn p{
-font-size:13px;
+.header h1{
+margin-top:15px;
+font-size:28px;
+}
+
+.header p{
+margin-top:8px;
+color:#94a3b8;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:#1e293b;
+border:1px solid #334155;
+border-radius:18px;
+padding:25px 10px;
+text-align:center;
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+background:#2563eb;
+}
+
+.card h3{
 margin-top:10px;
+font-size:17px;
+font-weight:normal;
 }
 
-.rubika{
-background:#00c853;
+@media(max-width:600px){
+
+.grid{
+grid-template-columns:1fr 1fr;
 }
 
-.telegram{
-background:#039be5;
-}
-
-.instagram{
-background:#e91e63;
-}
-
-.eita{
-background:#ff9800;
-}
-
-.soroush{
-background:#9c27b0;
-}
-
-.youtube{
-background:#f44336;
-}
-
-.whatsapp{
-background:#25d366;
-}
-
-.contact{
-background:#37474f;
 }
