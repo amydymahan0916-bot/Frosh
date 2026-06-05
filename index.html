@@ -10,7 +10,7 @@
 
 <style>
 
-/* ===== صفحه خوش‌آمد ===== */
+/* ===== Splash Screen ===== */
 #splash{
   position: fixed;
   inset: 0;
@@ -23,7 +23,7 @@
   align-items: center;
   flex-direction: column;
 
-  background: rgba(0,0,0,0.95);
+  background: #0f0f0f;
   color: #00ff00;
 
   font-family: monospace;
@@ -34,13 +34,13 @@
 
 /* لوگو */
 #logo{
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: url("profile.jpg") center/cover no-repeat;
-  box-shadow: 0 0 20px #00ff00;
-  animation: pulse 1.5s infinite;
-  margin-bottom: 15px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:url("profile.jpg") center/cover no-repeat;
+  box-shadow:0 0 20px #00ff00;
+  animation:pulse 1.5s infinite;
+  margin-bottom:15px;
 }
 
 @keyframes pulse{
@@ -49,17 +49,17 @@
   100%{transform:scale(1);}
 }
 
-/* متن تایپ */
+/* متن تایپی */
 #text{
-  font-size: 18px;
-  border-right: 2px solid #00ff00;
-  white-space: nowrap;
-  overflow: hidden;
+  font-size:18px;
+  border-right:2px solid #00ff00;
+  white-space:nowrap;
+  overflow:hidden;
 }
 
 /* سایت اصلی */
 #content{
-  display: none;
+  display:none;
 }
 
 </style>
@@ -68,13 +68,13 @@
 
 <body>
 
-<!-- ===== Splash Screen ===== -->
+<!-- ===== Splash ===== -->
 <div id="splash">
   <div id="logo"></div>
   <div id="text"></div>
 </div>
 
-<!-- ===== Main Site ===== -->
+<!-- ===== Main Content ===== -->
 <div id="content">
 
 <div class="header">
@@ -111,12 +111,23 @@
 <h3>خدمات ایتا</h3>
 </a>
 
+<a href="soroush.html" class="card">
+<img src="soroush.png" class="icon">
+<h3>خدمات سروش+</h3>
+</a>
+
 <a href="whatsapp.html" class="card">
 <img src="whatsapp.png" class="icon">
 <h3>خدمات واتساپ</h3>
 </a>
 
+<a href="youtube.html" class="card">
+<img src="youtube.png" class="icon">
+<h3>خدمات یوتیوب</h3>
+</a>
+
 <a href="contact.html" class="card">
+<img src="contact.png" class="icon">
 <h3>تماس با ما</h3>
 </a>
 
@@ -126,7 +137,7 @@
 
 <script>
 
-/* ===== متن تایپی ===== */
+/* متن تایپی */
 const message = "به پنل خدمات مجازی ماهان امیدی خوش آمدید";
 let i = 0;
 
@@ -139,7 +150,7 @@ function typeText(){
 }
 typeText();
 
-/* ===== ورود ===== */
+/* ورود */
 window.onload = function(){
 
   setTimeout(() => {
@@ -151,11 +162,11 @@ window.onload = function(){
       document.getElementById("content").style.display = "block";
     }, 1200);
 
-  }, 3500);
+  }, 3000);
 
 };
 
 </script>
 
 </body>
-  </html>
+</html>
