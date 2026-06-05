@@ -8,11 +8,15 @@
 
 <style>
 
-body {
+/* 🔥 مهم‌ترین بخش (رفع مشکل صفحه کامل) */
+html, body {
   margin: 0;
-  font-family: monospace;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: black;
+  font-family: monospace;
 }
 
 /* Matrix */
@@ -20,37 +24,43 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
-/* فلش نور */
+/* فلش */
 #flash {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: white;
   opacity: 0;
   z-index: 9998;
-  pointer-events: none;
 }
 
 /* صفحه خوش‌آمد */
 #splash {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   color: #00ff00;
 
-  transition: opacity 1.5s ease;
+  z-index: 9999;
+
   text-shadow: 0 0 10px #00ff00;
+  transition: opacity 1.5s ease;
 }
 
 /* متن */
@@ -69,7 +79,6 @@ canvas {
   background: white;
   color: black;
   padding: 20px;
-  font-family: sans-serif;
 }
 
 </style>
@@ -78,63 +87,57 @@ canvas {
 
 <body>
 
-<!-- فلش نور -->
 <div id="flash"></div>
 
-<!-- Matrix -->
 <canvas id="matrix"></canvas>
 
-<!-- Splash -->
 <div id="splash">
   <div id="text"></div>
 </div>
 
-<!-- Sound -->
 <audio id="hackSound">
-  <source src="https://www.soundjay.com/misc/sounds/beep-07.mp3" type="audio/mpeg">
+  <source src="https://www.soundjay.com/misc/sounds/beep-07.mp3">
 </audio>
 
-<!-- Content -->
 <div id="content">
 
 <h1>خدمات مجازی ماهان امیدی</h1>
-
-<p>سیستم با موفقیت فعال شد</p>
+<p>سیستم فعال شد</p>
 
 </div>
 
 <script>
 
-/* ===== تایپ ===== */
-const message = "ACCESSING SYSTEM... INJECTING PANEL...";
+/* تایپ */
+const message = "ACCESSING SYSTEM... WELCOME MAHAN OMIDI";
 let i = 0;
 
 function typeText() {
   if (i < message.length) {
     document.getElementById("text").innerHTML += message.charAt(i);
     i++;
-    setTimeout(typeText, 50);
+    setTimeout(typeText, 55);
   }
 }
 typeText();
 
-/* ===== Matrix ===== */
+/* Matrix */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
-let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
-letters = letters.split("");
-
+let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@".split("");
 const fontSize = 14;
-const columns = canvas.width / fontSize;
+let columns = canvas.width / fontSize;
+let drops = [];
 
-const drops = [];
-
-for (let x = 0; x < columns; x++)
-  drops[x] = 1;
+for (let x = 0; x < columns; x++) drops[x] = 1;
 
 function draw() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -156,22 +159,19 @@ function draw() {
 
 setInterval(draw, 33);
 
-/* ===== ورود ===== */
+/* ورود */
 window.onload = function () {
 
-  // صدای هک
   document.getElementById("hackSound").play().catch(()=>{});
 
   setTimeout(() => {
 
-    // فلش نور
-    document.getElementById("flash").style.opacity = "0.8";
+    document.getElementById("flash").style.opacity = "0.9";
 
     setTimeout(() => {
       document.getElementById("flash").style.opacity = "0";
-    }, 150);
+    }, 120);
 
-    // محو splash
     document.getElementById("splash").style.opacity = "0";
 
     setTimeout(() => {
@@ -179,7 +179,7 @@ window.onload = function () {
       document.getElementById("content").style.display = "block";
     }, 1500);
 
-  }, 3500);
+  }, 3000);
 
 };
 
