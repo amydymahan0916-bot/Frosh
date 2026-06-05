@@ -1,68 +1,68 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات مجازی ماهان امیدی</title>
-
-<style>
-
-body {
-  margin: 0;
-  font-family: monospace;
-  overflow: hidden;
-  background: black;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:tahoma;
 }
 
-/* Matrix */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
+/* ===== فول‌اسکرین واقعی ===== */
+html, body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:black;
 }
 
-/* فلش نور */
-#flash {
+/* ===== اسپلش ===== */
+#splash{
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: white;
-  opacity: 0;
-  z-index: 9998;
-  pointer-events: none;
-}
-
-/* صفحه خوش‌آمد */
-#splash {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.92);
   color: #00ff00;
 
-  transition: opacity 1.5s ease;
+  font-family: monospace;
   text-shadow: 0 0 10px #00ff00;
 }
 
-/* متن */
-#text {
+/* ===== متن تایپ ===== */
+#text{
   font-size: 20px;
   border-right: 2px solid #00ff00;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* سایت اصلی */
-#content {
+/* ===== canvas (Matrix) ===== */
+canvas{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ===== فلش نور ===== */
+#flash{
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* ===== محتوای اصلی ===== */
+#content{
   display: none;
   position: relative;
   z-index: 5;
@@ -70,120 +70,4 @@ canvas {
   color: black;
   padding: 20px;
   font-family: sans-serif;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- فلش نور -->
-<div id="flash"></div>
-
-<!-- Matrix -->
-<canvas id="matrix"></canvas>
-
-<!-- Splash -->
-<div id="splash">
-  <div id="text"></div>
-</div>
-
-<!-- Sound -->
-<audio id="hackSound">
-  <source src="https://www.soundjay.com/misc/sounds/beep-07.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Content -->
-<div id="content">
-
-<h1>خدمات مجازی ماهان امیدی</h1>
-
-<p>سیستم با موفقیت فعال شد</p>
-
-</div>
-
-<script>
-
-/* ===== تایپ ===== */
-const message = "ACCESSING SYSTEM... INJECTING PANEL...";
-let i = 0;
-
-function typeText() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeText, 50);
   }
-}
-typeText();
-
-/* ===== Matrix ===== */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
-letters = letters.split("");
-
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-
-const drops = [];
-
-for (let x = 0; x < columns; x++)
-  drops[x] = 1;
-
-function draw() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "#00ff00";
-  ctx.font = fontSize + "px monospace";
-
-  for (let i = 0; i < drops.length; i++) {
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
-      drops[i] = 0;
-
-    drops[i]++;
-  }
-}
-
-setInterval(draw, 33);
-
-/* ===== ورود ===== */
-window.onload = function () {
-
-  // صدای هک
-  document.getElementById("hackSound").play().catch(()=>{});
-
-  setTimeout(() => {
-
-    // فلش نور
-    document.getElementById("flash").style.opacity = "0.8";
-
-    setTimeout(() => {
-      document.getElementById("flash").style.opacity = "0";
-    }, 150);
-
-    // محو splash
-    document.getElementById("splash").style.opacity = "0";
-
-    setTimeout(() => {
-      document.getElementById("splash").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    }, 1500);
-
-  }, 3500);
-
-};
-
-</script>
-
-</body>
-</html>
