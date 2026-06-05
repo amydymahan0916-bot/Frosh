@@ -7,15 +7,16 @@
 <title>خدمات مجازی ماهان امیدی</title>
 
 <style>
+
+/* ===== کل صفحه ===== */
 body {
   margin: 0;
   font-family: monospace;
-  background: black;
   overflow: hidden;
-  color: #00ff00;
+  background: black;
 }
 
-/* Canvas پس‌زمینه */
+/* ===== بک‌گراند Matrix ===== */
 canvas {
   position: fixed;
   top: 0;
@@ -23,30 +24,37 @@ canvas {
   z-index: 0;
 }
 
-/* صفحه خوش‌آمد */
+/* ===== صفحه خوش‌آمد ===== */
 #splash {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0,0,0,0.85);
+  color: #00ff00;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgba(0,0,0,0.6);
+
+  z-index: 9999;
+
   transition: opacity 1.5s ease;
+  text-shadow: 0 0 10px #00ff00;
 }
 
-/* متن هکری */
+/* متن تایپ */
 #text {
   font-size: 22px;
   border-right: 2px solid #00ff00;
   white-space: nowrap;
   overflow: hidden;
-  text-shadow: 0 0 10px #00ff00;
 }
 
-/* سایت اصلی */
+/* ===== سایت اصلی ===== */
 #content {
   display: none;
   position: relative;
@@ -54,25 +62,28 @@ canvas {
   background: white;
   color: black;
   padding: 20px;
+  font-family: sans-serif;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<!-- افکت کدهای سبز -->
+<!-- ===== Matrix Background ===== -->
 <canvas id="matrix"></canvas>
 
-<!-- صفحه خوش‌آمد -->
+<!-- ===== Splash Screen ===== -->
 <div id="splash">
   <div id="text"></div>
 </div>
 
-<!-- سایت اصلی -->
+<!-- ===== Main Site ===== -->
 <div id="content">
 
 <div class="header">
+
 <div class="profile">
 <img src="profile.jpg" alt="ماهان امیدی">
 </div>
@@ -80,21 +91,25 @@ canvas {
 <h1>خدمات مجازی ماهان امیدی</h1>
 
 <p>خرید خدمات شبکه‌های اجتماعی با پشتیبانی سریع</p>
+
 </div>
 
-<!-- سرویس‌ها -->
 <div class="services">
+
 <a href="rubika.html">روبیکا</a> |
 <a href="telegram.html">تلگرام</a> |
 <a href="instagram.html">اینستاگرام</a> |
-<a href="contact.html">تماس</a>
+<a href="eita.html">ایتا</a> |
+<a href="whatsapp.html">واتساپ</a> |
+<a href="contact.html">تماس با ما</a>
+
 </div>
 
 </div>
 
 <script>
 
-/* ===== متن تایپ هکری ===== */
+/* ===== تایپ هکری ===== */
 const message = "ACCESSING SYSTEM... WELCOME MAHAN OMIDI PANEL...";
 let i = 0;
 
@@ -107,14 +122,14 @@ function typeText() {
 }
 typeText();
 
-/* ===== Matrix Rain ===== */
+/* ===== Matrix Effect ===== */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
 letters = letters.split("");
 
 const fontSize = 14;
@@ -147,6 +162,7 @@ setInterval(draw, 33);
 
 /* ===== ورود به سایت ===== */
 window.onload = function () {
+
   setTimeout(() => {
 
     document.getElementById("splash").style.opacity = "0";
@@ -157,6 +173,7 @@ window.onload = function () {
     }, 1500);
 
   }, 3500);
+
 };
 
 </script>
