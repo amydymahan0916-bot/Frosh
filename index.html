@@ -9,7 +9,11 @@
 </head>
 
 <body>
+<body>
 
+<div id="splash">
+  به پنل خدمات مجازی ماهان امیدی خوش آمدید
+</div>
 <div class="header">
 
 <div class="profile">
@@ -65,7 +69,18 @@
 <img src="contact.png" class="icon">
 <h3>تماس با ما</h3>
 </a>
+<script>
+window.onload = function () {
+  setTimeout(() => {
+    document.getElementById("splash").style.opacity = "0";
 
+    setTimeout(() => {
+      document.getElementById("splash").remove();
+    }, 1500);
+
+  }, 2000);
+};
+             </script>
 </div>
 
 </body>
