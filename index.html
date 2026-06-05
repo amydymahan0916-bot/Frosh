@@ -10,8 +10,8 @@
 
 <style>
 
-/* ===== اسپلش ===== */
-#splash {
+/* ===== صفحه خوش‌آمد ===== */
+#splash{
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -23,7 +23,7 @@
   align-items: center;
   flex-direction: column;
 
-  background: #0f0f0f;
+  background: rgba(0,0,0,0.95);
   color: #00ff00;
 
   font-family: monospace;
@@ -33,7 +33,7 @@
 }
 
 /* لوگو */
-#logo {
+#logo{
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -43,14 +43,14 @@
   margin-bottom: 15px;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
 }
 
-/* متن تایپی */
-#text {
+/* متن تایپ */
+#text{
   font-size: 18px;
   border-right: 2px solid #00ff00;
   white-space: nowrap;
@@ -58,7 +58,7 @@
 }
 
 /* سایت اصلی */
-#content {
+#content{
   display: none;
 }
 
@@ -68,15 +68,13 @@
 
 <body>
 
-<!-- ===== Splash ===== -->
+<!-- ===== Splash Screen ===== -->
 <div id="splash">
-
   <div id="logo"></div>
   <div id="text"></div>
-
 </div>
 
-<!-- ===== Content ===== -->
+<!-- ===== Main Site ===== -->
 <div id="content">
 
 <div class="header">
@@ -128,12 +126,12 @@
 
 <script>
 
-/* متن تایپی */
+/* ===== متن تایپی ===== */
 const message = "به پنل خدمات مجازی ماهان امیدی خوش آمدید";
 let i = 0;
 
-function typeText() {
-  if (i < message.length) {
+function typeText(){
+  if(i < message.length){
     document.getElementById("text").innerHTML += message.charAt(i);
     i++;
     setTimeout(typeText, 60);
@@ -141,19 +139,19 @@ function typeText() {
 }
 typeText();
 
-/* ورود */
-window.onload = function () {
+/* ===== ورود ===== */
+window.onload = function(){
 
   setTimeout(() => {
 
     document.getElementById("splash").style.opacity = "0";
 
     setTimeout(() => {
-      document.getElementById("splash").style.display = "none";
+      document.getElementById("splash").remove();
       document.getElementById("content").style.display = "block";
     }, 1200);
 
-  }, 3000); // 3 ثانیه
+  }, 3500);
 
 };
 
