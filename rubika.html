@@ -1,32 +1,105 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
-<head>
+<!DOCTYPE html><html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات روبیکا</title><link rel="stylesheet" href="style.css"></head>
-<body><div class="logo">
-<h1>🛍 خدمات روبیکا</h1>
-<p>قیمت‌ها به ازای هر 1000 عدد</p>
-</div><div class="menu"><a class="btn" href="payment.html?service=فالوور روبینو&price=100000">
-فالوور روبینو - 100,000 تومان
-</a><a class="btn" href="payment.html?service=ویو روبینو&price=20000">
-ویو روبینو - 20,000 تومان
-</a><a class="btn" href="payment.html?service=لایک روبینو&price=40000">
-لایک روبینو - 40,000 تومان
-</a><a class="btn" href="payment.html?service=کامنت روبینو&price=150000">
-کامنت روبینو - 150,000 تومان
-</a><a class="btn" href="payment.html?service=ویو لایو&price=150000">
-ویو لایو - 150,000 تومان
-</a><a class="btn" href="payment.html?service=ویو استوری&price=50000">
-ویو استوری - 50,000 تومان
-</a><a class="btn" href="payment.html?service=ممبر کانال&price=350000">
-ممبر کانال - 350,000 تومان
-</a><a class="btn" href="payment.html?service=ممبر گروه&price=350000">
-ممبر گروه - 350,000 تومان
-</a><a class="btn" href="payment.html?service=سین کانال&price=25000">
-سین کانال - 25,000 تومان
-</a><a class="btn" href="payment.html?service=ری اکشن کانال&price=50000">
-ری اکشن کانال - 50,000 تومان
-</a><a class="btn" href="index.html">
-⬅ بازگشت به صفحه اصلی
-</a></div></body>
-</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>خدمات روبیکا</title><link rel="stylesheet" href="style.css"><style>
+
+.list{
+width:95%;
+max-width:800px;
+margin:auto;
+}
+
+.item{
+background:white;
+padding:18px;
+border-radius:15px;
+margin-bottom:10px;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+font-size:18px;
+}
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+}
+
+.box{
+background:white;
+width:90%;
+max-width:500px;
+margin:120px auto;
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+.buy{
+display:block;
+background:#7c5cff;
+color:white;
+text-decoration:none;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+}
+
+.close{
+margin-top:10px;
+padding:10px;
+border:none;
+background:#ddd;
+border-radius:10px;
+}
+
+</style></head><body><div class="header"><div class="logo">🛍</div><h1>خدمات روبیکا</h1></div><div class="list"><div class="item" onclick="showService('فالوور روبینو','100000')">
+فالوور روبینو
+</div><div class="item" onclick="showService('ویو روبینو','20000')">
+ویو روبینو
+</div><div class="item" onclick="showService('لایک روبینو','40000')">
+لایک روبینو
+</div><div class="item" onclick="showService('کامنت روبینو','150000')">
+کامنت روبینو
+</div><div class="item" onclick="showService('ویو لایو','150000')">
+ویو لایو
+</div><div class="item" onclick="showService('ویو استوری','50000')">
+ویو استوری
+</div><div class="item" onclick="showService('ممبر کانال','350000')">
+ممبر کانال
+</div><div class="item" onclick="showService('ممبر گروه','350000')">
+ممبر گروه
+</div><div class="item" onclick="showService('سین کانال','25000')">
+سین کانال
+</div><div class="item" onclick="showService('ری اکشن کانال','50000')">
+ری اکشن کانال
+</div></div><div class="popup" id="popup"><div class="box"><h2 id="serviceName"></h2><h3 id="servicePrice"></h3><a id="buyBtn" class="buy">
+خرید سرویس
+</a><button class="close" onclick="closePopup()">
+بستن
+</button></div></div><script>
+
+function showService(name,price){
+
+document.getElementById("serviceName").innerText=name;
+
+document.getElementById("servicePrice").innerText=
+"قیمت: "+price+" تومان";
+
+document.getElementById("buyBtn").href=
+"payment.html?service="+encodeURIComponent(name)+"&price="+price;
+
+document.getElementById("popup").style.display="block";
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+</script></body></html>
