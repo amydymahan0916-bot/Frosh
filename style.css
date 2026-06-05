@@ -1,86 +1,113 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:tahoma;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:tahoma;
 }
 
+/* 🔥 مهم: جلوگیری از خراب شدن اسپلش */
+html, body{
+  height:100%;
+  width:100%;
+}
+
+/* ===== حالت عادی سایت ===== */
 body{
-background:#f3f5f9;
-padding:20px;
+  background:#f3f5f9;
+  padding:20px;
 }
 
+/* ===== اسپلش (اگر داخل HTML هست) ===== */
+#splash{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: rgba(0,0,0,0.95);
+  color: #00ff00;
+  font-family: monospace;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+/* ===== هدر سایت ===== */
 .header{
-text-align:center;
-margin-bottom:25px;
+  text-align:center;
+  margin-bottom:25px;
 }
 
 .profile{
-width:130px;
-height:130px;
-margin:auto;
-margin-bottom:15px;
+  width:130px;
+  height:130px;
+  margin:auto;
+  margin-bottom:15px;
 }
 
 .profile img{
-width:100%;
-height:100%;
-border-radius:50%;
-object-fit:cover;
-border:4px solid white;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid white;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .header h1{
-font-size:28px;
-color:#222;
-margin-bottom:10px;
+  font-size:28px;
+  color:#222;
+  margin-bottom:10px;
 }
 
 .header p{
-color:#666;
+  color:#666;
 }
 
+/* ===== خدمات ===== */
 .services{
-max-width:900px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
 .card{
-background:white;
-border-radius:20px;
-padding:25px 10px;
-text-decoration:none;
-text-align:center;
-color:#222;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
-transition:.3s;
+  background:white;
+  border-radius:20px;
+  padding:25px 10px;
+  text-decoration:none;
+  text-align:center;
+  color:#222;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-4px);
+  transform:translateY(-4px);
 }
 
 .icon{
-width:60px;
-height:60px;
-display:block;
-margin:auto;
-margin-bottom:10px;
-object-fit:contain;
+  width:60px;
+  height:60px;
+  display:block;
+  margin:auto;
+  margin-bottom:10px;
+  object-fit:contain;
 }
 
 .card h3{
-font-size:18px;
+  font-size:18px;
 }
 
+/* ===== موبایل ===== */
 @media(max-width:600px){
-
-.services{
-grid-template-columns:1fr 1fr;
-}
-
+  .services{
+    grid-template-columns:1fr 1fr;
+  }
 }
