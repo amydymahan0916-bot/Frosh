@@ -8,7 +8,6 @@
 
 <style>
 
-/* ===== کل صفحه ===== */
 body {
   margin: 0;
   font-family: monospace;
@@ -16,7 +15,7 @@ body {
   background: black;
 }
 
-/* ===== بک‌گراند Matrix ===== */
+/* Matrix */
 canvas {
   position: fixed;
   top: 0;
@@ -24,37 +23,45 @@ canvas {
   z-index: 0;
 }
 
-/* ===== صفحه خوش‌آمد ===== */
+/* فلش نور */
+#flash {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* صفحه خوش‌آمد */
 #splash {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  background: rgba(0,0,0,0.85);
-  color: #00ff00;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  z-index: 9999;
+  background: rgba(0,0,0,0.9);
+  color: #00ff00;
 
   transition: opacity 1.5s ease;
   text-shadow: 0 0 10px #00ff00;
 }
 
-/* متن تایپ */
+/* متن */
 #text {
-  font-size: 22px;
+  font-size: 20px;
   border-right: 2px solid #00ff00;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* ===== سایت اصلی ===== */
+/* سایت اصلی */
 #content {
   display: none;
   position: relative;
@@ -71,58 +78,47 @@ canvas {
 
 <body>
 
-<!-- ===== Matrix Background ===== -->
+<!-- فلش نور -->
+<div id="flash"></div>
+
+<!-- Matrix -->
 <canvas id="matrix"></canvas>
 
-<!-- ===== Splash Screen ===== -->
+<!-- Splash -->
 <div id="splash">
   <div id="text"></div>
 </div>
 
-<!-- ===== Main Site ===== -->
+<!-- Sound -->
+<audio id="hackSound">
+  <source src="https://www.soundjay.com/misc/sounds/beep-07.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Content -->
 <div id="content">
-
-<div class="header">
-
-<div class="profile">
-<img src="profile.jpg" alt="ماهان امیدی">
-</div>
 
 <h1>خدمات مجازی ماهان امیدی</h1>
 
-<p>خرید خدمات شبکه‌های اجتماعی با پشتیبانی سریع</p>
-
-</div>
-
-<div class="services">
-
-<a href="rubika.html">روبیکا</a> |
-<a href="telegram.html">تلگرام</a> |
-<a href="instagram.html">اینستاگرام</a> |
-<a href="eita.html">ایتا</a> |
-<a href="whatsapp.html">واتساپ</a> |
-<a href="contact.html">تماس با ما</a>
-
-</div>
+<p>سیستم با موفقیت فعال شد</p>
 
 </div>
 
 <script>
 
-/* ===== تایپ هکری ===== */
-const message = "ACCESSING SYSTEM... WELCOME MAHAN OMIDI PANEL...";
+/* ===== تایپ ===== */
+const message = "ACCESSING SYSTEM... INJECTING PANEL...";
 let i = 0;
 
 function typeText() {
   if (i < message.length) {
     document.getElementById("text").innerHTML += message.charAt(i);
     i++;
-    setTimeout(typeText, 60);
+    setTimeout(typeText, 50);
   }
 }
 typeText();
 
-/* ===== Matrix Effect ===== */
+/* ===== Matrix ===== */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -160,11 +156,22 @@ function draw() {
 
 setInterval(draw, 33);
 
-/* ===== ورود به سایت ===== */
+/* ===== ورود ===== */
 window.onload = function () {
+
+  // صدای هک
+  document.getElementById("hackSound").play().catch(()=>{});
 
   setTimeout(() => {
 
+    // فلش نور
+    document.getElementById("flash").style.opacity = "0.8";
+
+    setTimeout(() => {
+      document.getElementById("flash").style.opacity = "0";
+    }, 150);
+
+    // محو splash
     document.getElementById("splash").style.opacity = "0";
 
     setTimeout(() => {
