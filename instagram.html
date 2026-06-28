@@ -1,209 +1,159 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>خدمات اینستاگرام | خدمات مجازی ماهان امیدی</title>
+<title>خدمات اینستاگرام</title>
 
 <link rel="stylesheet" href="style.css">
 
-
 <style>
 
-body{
-background:#050505;
-color:white;
+.list{
+width:95%;
+max-width:800px;
+margin:auto;
 }
 
+.item{
+background:white;
+padding:18px;
+border-radius:15px;
+margin-bottom:10px;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+font-size:18px;
+}
 
-.instagram-page{
-max-width:900px;
-margin:auto;
-padding:30px 15px;
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+}
+
+.box{
+background:white;
+width:90%;
+max-width:500px;
+margin:120px auto;
+padding:25px;
+border-radius:20px;
 text-align:center;
 }
 
-
-.instagram-page h1{
-color:#00ff88;
-font-size:35px;
-margin-bottom:15px;
-}
-
-
-.intro{
-color:#ccc;
-font-size:17px;
-}
-
-
-.services-box{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-margin-top:35px;
-}
-
-
-.service{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(0,255,136,.4);
-border-radius:25px;
-padding:25px;
-transition:.3s;
-}
-
-
-.service:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px #00ff8844;
-}
-
-
-.service h2{
-color:#00ff88;
-}
-
-
-.service p{
-color:#ddd;
-}
-
-
 .buy{
-display:inline-block;
-margin-top:15px;
-background:#00ff88;
-color:#000;
-padding:12px 30px;
-border-radius:25px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-.back{
 display:block;
-margin-top:35px;
-color:#00ff88;
+background:#E1306C;
+color:white;
 text-decoration:none;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
 }
 
-
-
-@media(max-width:600px){
-
-.services-box{
-grid-template-columns:1fr;
-}
-
-.instagram-page h1{
-font-size:28px;
-}
-
+.close{
+margin-top:10px;
+padding:10px;
+border:none;
+background:#ddd;
+border-radius:10px;
 }
 
 </style>
 
 </head>
 
-
 <body>
 
+<div class="header">
 
-<div class="instagram-page">
+<div class="logo">🚀</div>
 
+<h1>خدمات اینستاگرام</h1>
 
-<h1>
-خدمات اینستاگرام
-</h1>
+</div>
 
+<div class="list">
 
-<p class="intro">
-افزایش فالوور، لایک، بازدید و رشد پیج اینستاگرام
-</p>
+<div class="item" onclick="showService('فالوور اینستاگرام','450000')">
+فالوور اینستاگرام
+</div>
 
+<div class="item" onclick="showService('ویو اینستاگرام','50000')">
+ویو اینستاگرام
+</div>
 
+<div class="item" onclick="showService('لایک اینستاگرام','100000')">
+لایک اینستاگرام
+</div>
 
-<div class="services-box">
+<div class="item" onclick="showService('کامنت اینستاگرام','500000')">
+کامنت اینستاگرام
+</div>
 
+<div class="item" onclick="showService('ویو لایو اینستاگرام','500000')">
+ویو لایو اینستاگرام
+</div>
 
-<div class="service">
+<div class="item" onclick="showService('ویو استوری اینستاگرام','120000')">
+ویو استوری اینستاگرام
+</div>
 
-<h2>فالوور اینستاگرام</h2>
+<div class="item" onclick="showService('ممبر کانال اینستاگرام','1000000')">
+ممبر کانال اینستاگرام
+</div>
 
-<p>
-افزایش دنبال‌کننده برای پیج شما
-</p>
+</div>
 
-<a class="buy" href="payment.html">
-خرید
+<div class="popup" id="popup">
+
+<div class="box">
+
+<h2 id="serviceName"></h2>
+
+<h3 id="servicePrice"></h3>
+
+<a id="buyBtn" class="buy">
+خرید سرویس
 </a>
 
-</div>
-
-
-
-<div class="service">
-
-<h2>لایک اینستاگرام</h2>
-
-<p>
-افزایش لایک و تعامل پست‌ها
-</p>
-
-<a class="buy" href="payment.html">
-خرید
-</a>
+<button class="close" onclick="closePopup()">
+بستن
+</button>
 
 </div>
 
-
-
-<div class="service">
-
-<h2>بازدید اینستاگرام</h2>
-
-<p>
-افزایش ویو ریلز و ویدیوها
-</p>
-
-<a class="buy" href="payment.html">
-خرید
-</a>
-
 </div>
 
+<script>
 
+function showService(name,price){
 
-<div class="service">
+document.getElementById("serviceName").innerText=name;
 
-<h2>کامنت اینستاگرام</h2>
+document.getElementById("servicePrice").innerText=
+"قیمت: "+Number(price).toLocaleString('fa-IR')+" تومان";
 
-<p>
-افزایش تعامل و اعتبار پیج
-</p>
+document.getElementById("buyBtn").href=
+"payment.html?service="+encodeURIComponent(name)+"&price="+price;
 
-<a class="buy" href="payment.html">
-خرید
-</a>
+document.getElementById("popup").style.display="block";
 
-</div>
+}
 
+function closePopup(){
 
-</div>
+document.getElementById("popup").style.display="none";
 
+}
 
-
-<a class="back" href="index.html">
-بازگشت به صفحه اصلی
-</a>
-
-
-</div>
-
+</script>
 
 </body>
-</html>
+  </html>
