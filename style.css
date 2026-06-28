@@ -6,17 +6,20 @@ font-family:tahoma;
 }
 
 body{
-background:linear-gradient(135deg,#111827,#1f2937);
+background:linear-gradient(135deg,#0f172a,#1e293b);
 padding:20px;
 min-height:100vh;
 }
 
+
+/* هدر */
 
 .header{
 text-align:center;
 margin-bottom:35px;
 color:white;
 }
+
 
 .profile{
 width:150px;
@@ -25,12 +28,13 @@ margin:auto;
 margin-bottom:20px;
 }
 
+
 .profile img{
 width:100%;
 height:100%;
 border-radius:50%;
 object-fit:cover;
-border:5px solid #fff;
+border:5px solid white;
 box-shadow:0 0 30px #00ff88;
 }
 
@@ -40,10 +44,13 @@ font-size:30px;
 margin-bottom:12px;
 }
 
+
 .header p{
-color:#ddd;
+color:#d1d5db;
 }
 
+
+/* کارت ها */
 
 .services{
 max-width:900px;
@@ -56,28 +63,31 @@ gap:20px;
 
 .card{
 background:rgba(255,255,255,.12);
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.25);
+backdrop-filter:blur(12px);
 border-radius:25px;
 padding:30px 10px;
 text-decoration:none;
 text-align:center;
 color:white;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 transition:.3s;
 }
 
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 35px rgba(0,0,0,.4);
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,255,136,.25);
 }
 
 
 .icon{
 width:75px;
 height:75px;
-object-fit:contain;
+display:block;
+margin:auto;
 margin-bottom:15px;
+object-fit:contain;
 }
 
 
@@ -86,24 +96,33 @@ font-size:19px;
 }
 
 
+
+/* موبایل */
+
 @media(max-width:600px){
 
+body{
+padding:15px;
+}
+
+.header h1{
+font-size:24px;
+}
+
+
 .services{
-grid-template-columns:1fr 1fr;
 gap:12px;
 }
+
 
 .card{
 padding:20px 5px;
 }
 
+
 .icon{
 width:60px;
 height:60px;
-}
-
-.header h1{
-font-size:24px;
 }
 
 }
